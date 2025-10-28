@@ -26,6 +26,41 @@ While ambitious, our goal is to build a 6502 system so advanced it could theoret
 **Phase 5:** Advanced System Software  
 **Phase 6:** Innovative Applications
 
+Software Toolchain Overview
+Development Environment
+    Raspberry Pi OS Lite - Minimal Linux for CLI-only development
+    Arduino CLI - Command-line Arduino development without IDE
+    CC65 - 6502 C compiler and assembler suite
+    AVR-GCC - Cross-compiler for Arduino Mega programming
+    AVRDUDE - Firmware uploader for AVR microcontrollers
+
+Programming Languages & Tools
+    C/C++ - Arduino sketches and system utilities
+    6502 Assembly - Low-level system programming
+    Bash - Automation scripts and toolchain management
+    Git - Version control and project management
+    Make - Build automation for cross-compilation
+
+Communication & Monitoring
+    Minicom/Picocom - Serial terminal for hardware communication
+    Screen/Tmux - Terminal multiplexing for session management
+    Vim/Nano - Text editors for code development
+Specialized Tools
+    Custom EEPROM Programmer - Our own Arduino-based ROM burner
+    FRAM Configuration Tools - Utilities for programmable address decoding
+    Serial EEPROM Manager - I²C mass storage system utilities
+    Bus Monitor - Arduino-based bus analysis and debugging
+
+Cross-Development Workflow
+
+All development happens on the Pi Zero, targeting:
+    Arduino Mega 2560 (AVR architecture)
+    W65C02 (6502 architecture)
+    Serial EEPROM (I²C devices)
+
+This toolchain provides a complete, professional-grade development environment while maintaining the authentic retro computing experience.
+
+
 ### Why ACME 6502?
 This project bridges eras - using contemporary tools to master vintage technology while implementing forward-thinking concepts like programmable hardware and software-defined architecture. You're not just building a computer; you're understanding the fundamental principles that power all modern computing systems.
 
