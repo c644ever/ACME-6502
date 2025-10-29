@@ -4,8 +4,8 @@
 
 **ACME 6502** is not just another breadboard computer - it's a comprehensive educational system that teaches computer architecture from the ground up. Our unique approach combines vintage computing with modern development methods.
 
-### Revolutionary Features
-- **FRAM-based address decoding** - Programmable hardware logic instead of fixed 74-series chips
+### Whats different
+- **EEPROM-based address decoding** - Programmable hardware logic instead of fixed 74-series chips
 - **Serial EEPROM mass storage** - I²C-based file system for program storage
 - **CLI-only development** - Authentic 1980s development experience on Raspberry Pi
 - **Progressive learning path** - From basic electronics to complex computer architecture
