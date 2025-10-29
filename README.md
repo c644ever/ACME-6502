@@ -15,14 +15,12 @@ While ambitious, our goal is to build a 6502 system so advanced it could theoret
 - Dynamic memory management with bank switching
 - File system with serial EEPROM storage
 - Multi-tasking capabilities through interrupt handling
-- Hardware-accelerated graphics (with future expansion)
-- Network connectivity via modern interfaces
 
 ### Learning Path
 **Phase 1:** CLI & Electronics Foundation  
 **Phase 2:** Arduino Control System  
 **Phase 3:** 6502 Processor Integration  
-**Phase 4:** FRAM Address Logic & Memory  
+**Phase 4:** EEPROM Address Logic & Memory  
 **Phase 5:** Advanced System Software  
 **Phase 6:** Innovative Applications
 
@@ -56,9 +54,8 @@ Cross-Development Workflow
 All development happens on the Pi Zero, targeting:
     Arduino Mega 2560 (AVR architecture)
     W65C02 (6502 architecture)
-    Serial EEPROM (I²C devices)
 
-This toolchain provides a complete, professional-grade development environment while maintaining the authentic retro computing experience.
+This toolchain provides a complete development environment while maintaining the authentic retro computing experience.
 
 
 ### Why ACME 6502?
