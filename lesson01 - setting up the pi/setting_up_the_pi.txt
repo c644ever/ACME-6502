@@ -1,0 +1,128 @@
+﻿Raspberry Pi Zero Setup Steps
+What You'll Need
+    • Raspberry Pi Zero (or Zero 2 W)
+    • Micro SD card (16GB+ recommended)
+    • Micro HDMI to HDMI adapter
+    • TV or monitor with HDMI input
+    • USB keyboard and mouse
+    • Powered USB hub
+    • 5V power supply
+    • Network connection (WiFi or Ethernet)
+Step 1: Operating System Installation
+    1. Download Raspberry Pi Imager
+        ◦ Visit raspberrypi.com/software
+        ◦ Download and install Raspberry Pi Imager for your computer
+    2. Write OS to SD Card
+        ◦ Insert micro SD card into your computer
+        ◦ Open Raspberry Pi Imager
+        ◦ Choose: Raspberry Pi OS Lite (bookworm) (32-bit)
+        ◦ Select your SD card as storage
+        ◦ Click "Write" and wait for completion
+Step 2: First Boot & Basic Configuration
+    1. Physical Connections
+        ◦ Insert SD card into Pi Zero
+        ◦ Connect micro HDMI to TV/monitor
+        ◦ Connect USB otg hub to Pi Zero
+        ◦ Connect keyboard to USB hub
+        ◦ Connect power last
+    2. Initial Setup
+        ◦ Wait for boot process to complete
+        ◦ Login with: pi / raspberry
+        ◦ Run configuration tool:
+		sudo raspi-config
+    3. Essential Configuration
+        ◦ System Options → Change password
+        ◦ System Options → Hostname: acme-6502
+        ◦ System Options → Wireless LAN: Connect to your WiFi
+        ◦ Display Options → noot possible anymore
+Resolution: use: video=hdmi_A_1... in config.txt
+        ◦ Interface Options → SSH: Enable
+        ◦ Advanced Options → Expand Filesystem
+        ◦ Finish → Reboot when prompted
+Step 3: System Update & Basic Tools
+Bash:
+# Update system
+sudo apt update && sudo apt upgrade -y
+
+# Install essential tools
+sudo apt install -y git vim tmux curl wget tree htop nano micro
+
+# Create project directory
+mkdir -p ~/acme-6502
+cd ~/acme-6502
+Step 4: Development Toolchain Installation
+Bash:
+# 6502 Cross-Compiler
+sudo apt install -y cc65
+
+# AVR Development (Arduino)
+sudo apt install -y gcc-avr avr-libc avrdude
+
+# Serial Communication
+sudo apt install -y minicom picocom
+sudo usermod -a -G dialout pi
+
+# Arduino CLI
+cd ~
+curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
+echo 'export PATH="$HOME/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
+
+# Install Arduino Mega support
+arduino-cli core update-index
+arduino-cli core install arduino:avr
+
+Step 5: Project Setup & Git Configuration
+bash
+# Navigate to project
+cd ~/acme-6502
+
+# Initialize Git repository
+git init
+git config --global user.email "developer@acme-6502"
+git config --global user.name "ACME 6502 Developer"
+
+# Create initial commit
+git add .
+git commit -m "Initial project structure"
+Step 6: Environment Optimization
+bash
+# Useful aliases
+echo "alias ll='ls -la'" >> ~/.bashrc
+echo "alias project='cd ~/acme-6502'" >> ~/.bashrc
+echo "cd ~/acme-6502" >> ~/.bashrc
+
+# Custom prompt
+echo 'PS1="\[\033[1;32m\]\u@acme-6502:\w\$ \[\033[0m\]"' >> ~/.bashrc
+
+# Welcome message
+echo 'echo "=== ACME 6502 Development System ==="' >> ~/.bashrc
+echo 'echo "    Ready for vintage computing!"' >> ~/.bashrc
+
+# Apply changes
+source ~/.bashrc
+Step 7: Verification
+bash
+# Verify installations
+cc65 --version
+avr-gcc --version
+arduino-cli version
+
+# Check Arduino board detection
+arduino-cli board list
+
+# Verify project structure
+cd ~/acme-6502 && ls -la
+Expected Outcome
+After completing these steps, you'll have:
+    • Fresh Raspberry Pi OS Lite (32bit) installation
+    • Network connectivity (WiFi/Ethernet)
+    • Full development toolchain (cc65, avr-gcc, arduino-cli)
+    • Project directory structure
+    • Git version control initialized
+    • Comfortable command-line environment
+
+Time required: 30-60 minutes
+
+Difficulty: Beginner-friendly with step-by-step guidance
+Your Pi Zero is now ready for the ACME 6502 breadboard computer development journey!
