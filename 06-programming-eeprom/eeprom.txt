@@ -1,0 +1,79 @@
+1. Wiring a eeprom to the Arduino
+
+a) 28c64 Address LUT
+	
+The address LUT schould be connected to the address bus
+
+a4  bus  ->  a0  eeprom
+a5  bus  ->  a1  eeprom
+...
+a15	->  a11  eeprom
+
+gnd	->  a12  eeprom (reserverd for alternate memorymap LUT)
+
+What is in the ROM?
+
+bits on datalines 
+	D0 -> sram 	/CE-RAM	(active low)
+	D1 -> sysROM 	/CE-ROM 
+	D2 -> VIA1	/CE-VIA1
+	D3 -> VIA2	/CE-VIA2
+	D4 -> ACIA	/CE-ACIA
+	
+	LUT byte		EEPROM ADDRESS
+	0b11111110	->	$0000 - $001F	Activate Ram on address $0000 - $01FF
+	0b11111011	->	$0020		Activate VIA1		$0200 - $020F
+	0b11110111	->	$0021		Activate VIA2		$0210 - $021F
+	0b11101111	->	$0022		Activate ACIA		$0220 - $0228 
+	0b11111110	->	$0021 - $07FF	Activate RAM on address $0210 - $7FFF
+	0b11111101	->	$0800 - $0FFF	Activate ROM on address $8000 - $FFFF
+
+
+b) 28c256 system rom
+
+For testing only 0xea in the eeprom
+
+...
+
+
+
+
+2. Programming Process
+
+needed Pins:
+	Write Enable	(active low)
+	Chip Enable	(active low)
+	Output Enable	(active low)
+
+	Address lines	(wierd wireing for A8 and up )
+	I/O lines	
+
+prerequisites:
+
+	WE -> HIGH
+	CE -> HIGH
+	OE -> HIGH
+
+nextaddress:
+	* Address on Addresbus
+	* 0xFF -> DDRL (PORT L output)
+	* Databyte -> PORTL (get databyte from serial ...)
+	* wait 1
+	* CE -> LOW
+	* WE -> LOW
+	* wait 1
+	* WE -> HIGH
+	* CW -> HIGH
+	* wait (10)
+
+verify write
+	0xOO -> DDRL (PORTL input)
+	0Xff -> PORTL (activate PullUps)
+	OE_PIN -> LOW
+	CE_PIN -> LOW
+	wait 1
+	compare PINL and Databyte - break if uneven
+	CE_PIN -> HIGH
+	OE_PIN -> HIGH
+	
+	nextaddress
