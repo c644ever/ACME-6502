@@ -5,7 +5,7 @@
 
 // SETUP: Runs ONE TIME when Arduino starts or resets
 void setup() {
-  Serial.begin(9600);  // Start communication with computer at 9600 bits per second
+  Serial.begin(115200);  // Start communication with computer at 115200 bits per second
   
   /* BINARY EXPLANATION:
    * B11111111 means: 1 1 1 1 1 1 1 1
@@ -53,7 +53,7 @@ void loop() {
      * When i=7: 00000001 << 7 = 10000000 (LED 7 lights up)
      */
     PORTL = (1 << i);  // Light moves one position each time
-    delay(150);  // Wait 150 milliseconds (0.15 seconds)
+    delay(1000);  // Wait 150 milliseconds (0.15 seconds)
   }
   
   // Move light right to left (skip the ends to avoid duplicate)
@@ -66,11 +66,11 @@ void loop() {
      * So: i=6,5,4,3,2,1 (6 times total)
      */
     PORTL = (1 << i);  // Light moves back
-    delay(150);
+    delay(1000);
   }
   
   PORTL = B00000000;  // Turn all LEDs off
-  delay(500);  // Wait half second
+  delay(1000);  // Wait half second
   
   
   // =================================================================
