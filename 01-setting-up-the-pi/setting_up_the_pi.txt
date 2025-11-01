@@ -74,23 +74,16 @@ arduino-cli core install arduino:avr
 
 Step 5: Project Setup & Git Configuration
 bash
+git clone https://github.com/c644ever/ACME-6502/ACME6502.git
 # Navigate to project
-cd ~/acme-6502
+cd ~/ACME-6502
 
-# Initialize Git repository
-git init
-git config --global user.email "developer@acme-6502"
-git config --global user.name "ACME 6502 Developer"
-
-# Create initial commit
-git add .
-git commit -m "Initial project structure"
 Step 6: Environment Optimization
 bash
 # Useful aliases
 echo "alias ll='ls -la'" >> ~/.bashrc
-echo "alias project='cd ~/acme-6502'" >> ~/.bashrc
-echo "cd ~/acme-6502" >> ~/.bashrc
+echo "alias project='cd ~/ACME-6502'" >> ~/.bashrc
+echo "cd ~/ACME-6502" >> ~/.bashrc
 
 # Custom prompt
 echo 'PS1="\[\033[1;32m\]\u@acme-6502:\w\$ \[\033[0m\]"' >> ~/.bashrc
@@ -101,6 +94,7 @@ echo 'echo "    Ready for vintage computing!"' >> ~/.bashrc
 
 # Apply changes
 source ~/.bashrc
+
 Step 7: Verification
 bash
 # Verify installations
@@ -112,14 +106,13 @@ arduino-cli version
 arduino-cli board list
 
 # Verify project structure
-cd ~/acme-6502 && ls -la
+cd ~/ACME-6502 && ls -la
 Expected Outcome
 After completing these steps, you'll have:
     • Fresh Raspberry Pi OS Lite (32bit) installation
     • Network connectivity (WiFi/Ethernet)
     • Full development toolchain (cc65, avr-gcc, arduino-cli)
     • Project directory structure
-    • Git version control initialized
     • Comfortable command-line environment
 
 Time required: 30-60 minutes
