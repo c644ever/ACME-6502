@@ -24,7 +24,7 @@ echo "Step 2: Uploading (sending to Arduino)..."
 arduino-cli upload -p /dev/ttyACM0 --fqbn arduino:avr:mega .
 
 # Success message
-echo "Build complete! LEDs should be lighting up."
+echo "Build complete!"
 echo ""
 echo "Tip: Without this script, you'd have to type both"
 echo "      long commands every time. Now just type ./build.sh!"
